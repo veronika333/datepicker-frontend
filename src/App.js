@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import Calendar from './Components/Calendar/Calendar';
+import Registration from './Components/Registration/Registration';
+//import Calendar from './Components/Calendar/Calendar';
 
 function App() {
   return (
     <div>
-      <Calendar />
+      <Registration />
     </div>
   );
 }
