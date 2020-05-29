@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Registration = () => {
+const Login = () => {
 
-    const [newUser, setNewUser] = useState({
-        firstname: '',
-        lastname: '',
+    const [loginUser, setLoginUser] = useState({
         username: '',
-        email: '',
         password: ''
     })
 
     const changeHandler = (e) => {
-        setNewUser({
-            ...newUser,
+        setLoginUser({
+            ...loginUser,
             [e.target.name]: e.target.value
         })
     }
@@ -21,7 +18,7 @@ const Registration = () => {
     // send registration from front to back
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8010/register/send', newUser)
+        axios.post('http://localhost:8010/login/send', loginUser)
             .then(response => {
                 console.log(response.data)
             })
@@ -30,14 +27,10 @@ const Registration = () => {
             })
     };
 
-
     return (
         <div>
             <form>
-                <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
-                <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
                 <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                <input type="text" id="email" name="email" onChange={changeHandler}></input>
                 <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
                 <button type="submit" onClick={submitHandler}>Submit</button>
             </form>
@@ -45,4 +38,4 @@ const Registration = () => {
     );
 }
 
-export default Registration;
+export default Login;
