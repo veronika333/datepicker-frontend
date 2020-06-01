@@ -34,11 +34,21 @@ const Registration = () => {
     return (
         <div>
             <form>
-                <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
-                <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
-                <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                <input type="text" id="email" name="email" onChange={changeHandler}></input>
-                <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
+                <label htmlFor="firstname">
+                    <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="lastname">
+                    <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="username">
+                    <input type="text" id="username" name="username" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="email">
+                    <input type="text" id="email" name="email" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="password">
+                    <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
+                </label>
                 <button type="submit" onClick={submitHandler}>Submit</button>
             </form>
         </div>

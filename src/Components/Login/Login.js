@@ -30,8 +30,12 @@ const Login = () => {
     return (
         <div>
             <form>
-                <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
+                <label htmlFor="username">
+                    <input type="text" id="username" name="username" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="password">
+                    <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
+                </label>
                 <button type="submit" onClick={submitHandler}>Submit</button>
             </form>
         </div>
