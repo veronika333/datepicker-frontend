@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import Nav from "./Components/Nav/Nav";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainNav from "./Components/MainNav/MainNav";
 import Home from "./Components/Home/Home";
 import Registration from './Components/Registration/Registration';
 import Login from './Components/Login/Login';
@@ -12,7 +13,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Nav />
+        <MainNav />
         <main>
           <Switch>
             <Route path="/" exact component={Home} />
