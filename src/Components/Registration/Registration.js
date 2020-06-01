@@ -22,8 +22,8 @@ const Registration = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8010/register/send', newUser)
-            .then(response => {
-                console.log(response.data)
+             .then(response => {
+              console.log(response.data)
             })
             .catch(err => {
                 console.log(err)
