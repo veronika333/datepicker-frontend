@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 const Registration = () => {
 
     const [newUser, setNewUser] = useState({
@@ -22,15 +21,20 @@ const Registration = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8010/register/send', newUser)
-             .then(response => {
-              console.log(response.data)
+            //axios.post('http://localhost:3001/registration', newUser)
+            .then(response => {
+                console.log(response.data);
+                console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.headers);
+    console.log(response.config);
             })
             .catch(err => {
                 console.log(err)
             })
     };
 
-
+    
     return (
         <div>
             <form>
