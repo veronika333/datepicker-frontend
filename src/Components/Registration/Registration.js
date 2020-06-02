@@ -7,53 +7,52 @@ const Registration = () => {
         lastname: '',
         username: '',
         email: '',
-        password: ''
+        password: '',
     })
 
     const changeHandler = (e) => {
+        e.preventDefault();
         setNewUser({
             ...newUser,
             [e.target.name]: e.target.value
-        })
-    }
+        });
+    };
 
     // send registration from front to back
     const submitHandler = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8010/register/send', newUser)
             //axios.post('http://localhost:3001/registration', newUser)
-            .then(response => {
+            .then((response) => {
                 console.log(response.data);
                 console.log(response.status);
     console.log(response.statusText);
     console.log(response.headers);
     console.log(response.config);
             })
+    
             .catch(err => {
-                console.log(err)
+                console.log(err);
             })
     };
 
     
     return (
         <div>
-            <form>
-                <label htmlFor="firstname">
+            <form onSubmit={submitHandler}> 
+            <label htmlFor="firstname">Firstname</label>
                     <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="lastname">
+               
+                    <label htmlFor="lastname">Lastname</label>
                     <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="username">
+                    <label htmlFor="username">Username</label>
                     <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="email">
+                    <label htmlFor="email">Email</label>
                     <input type="text" id="email" name="email" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="password">
-                    <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
-                </label>
-                <button type="submit" onClick={submitHandler}>Submit</button>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" name="password" onChange={changeHandler}></input>
+                   
+                <button type="submit" value="Register">Submit</button>
             </form>
         </div>
     );
