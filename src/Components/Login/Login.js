@@ -9,13 +9,25 @@ const Login = () => {
         username: '',
         password: ''
     })
+  const changeHandler = (e) => {
+    setLoginUser({
+      ...loginUser,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    const changeHandler = (e) => {
-        setLoginUser({
-            ...loginUser,
-            [e.target.name]: e.target.value
-        })
-    }
+  // send registration from front to back
+  const submitHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8010/login/send", loginUser)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
     // send registration from front to back
     const submitHandler = (e) => {
@@ -54,5 +66,6 @@ const Login = () => {
         </div>
     );
 }
+
 
 export default Login;

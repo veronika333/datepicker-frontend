@@ -54,6 +54,7 @@ const Registration = () => {
                     <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
                 </label>
                 <button type="submit" >Submit</button>
+
             </form>
         </div>
     );
