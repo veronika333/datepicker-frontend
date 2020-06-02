@@ -38,19 +38,23 @@ const Registration = () => {
     return (
         <div>
             <form onSubmit={submitHandler}>
-                <label htmlFor="firstname">Firstname</label>
-                <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
+                <label htmlFor="firstname">
+                    <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="lastname">
+                    <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="username">
+                    <input type="text" id="username" name="username" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="email">
+                    <input type="text" id="email" name="email" onChange={changeHandler}></input>
+                </label>
+                <label htmlFor="password">
+                    <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
+                </label>
+                <button type="submit" >Submit</button>
 
-                <label htmlFor="lastname">Lastname</label>
-                <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
-                <label htmlFor="username">Username</label>
-                <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                <label htmlFor="email">Email</label>
-                <input type="text" id="email" name="email" onChange={changeHandler}></input>
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" name="password" onChange={changeHandler}></input>
-
-                <button type="submit" value="Register">Submit</button>
             </form>
         </div>
     );
