@@ -25,35 +25,32 @@ const Registration = () => {
             .then(response => {
                 console.log(response.data);
                 console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.config);
             })
             .catch(err => {
                 console.log(err)
             })
     };
 
-    
+
     return (
         <div>
-            <form>
-                <label htmlFor="firstname">
-                    <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="lastname">
-                    <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="username">
-                    <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="email">
-                    <input type="text" id="email" name="email" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="password">
-                    <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
-                </label>
-                <button type="submit" onClick={submitHandler}>Submit</button>
+            <form onSubmit={submitHandler}>
+                <label htmlFor="firstname">Firstname</label>
+                <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
+
+                <label htmlFor="lastname">Lastname</label>
+                <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
+                <label htmlFor="username">Username</label>
+                <input type="text" id="username" name="username" onChange={changeHandler}></input>
+                <label htmlFor="email">Email</label>
+                <input type="text" id="email" name="email" onChange={changeHandler}></input>
+                <label htmlFor="password">Password</label>
+                <input type="password" id="password" name="password" onChange={changeHandler}></input>
+
+                <button type="submit" value="Register">Submit</button>
             </form>
         </div>
     );
