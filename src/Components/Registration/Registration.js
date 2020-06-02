@@ -25,19 +25,19 @@ const Registration = () => {
             .then(response => {
                 console.log(response.data);
                 console.log(response.status);
-    console.log(response.statusText);
-    console.log(response.headers);
-    console.log(response.config);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.config);
             })
             .catch(err => {
                 console.log(err)
             })
     };
 
-    
+
     return (
         <div>
-            <form>
+            <form onSubmit={submitHandler}>
                 <label htmlFor="firstname">
                     <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
                 </label>
@@ -53,7 +53,7 @@ const Registration = () => {
                 <label htmlFor="password">
                     <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
                 </label>
-                <button type="submit" onClick={submitHandler}>Submit</button>
+                <button type="submit" >Submit</button>
             </form>
         </div>
     );
