@@ -17,5 +17,33 @@
       "passwrod": "jerry",
       "id": 2
     }
+  ],
+  "event": [
+    {
+      "id": 1,
+      "title": "Party",
+      "description": "yes",
+      "date": "12.10.20"
+    },
+    {
+      "id": 2,
+      "title": "Party",
+      "description": "yes",
+      "date": "12.10.20"
+    },
+    {
+      "title": "Awesome",
+      "description": "",
+      "date": "2020-06-09",
+      "desription": "htgggg",
+      "id": 3
+    },
+    {
+      "title": "Pigeon",
+      "description": "",
+      "date": "2020-06-08",
+      "desription": "W e will have a pigeon themed party",
+      "id": 4
+    }
   ]
 }

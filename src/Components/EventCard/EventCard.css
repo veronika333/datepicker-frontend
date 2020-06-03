@@ -1,0 +1,19 @@
+.eventCard {
+  box-shadow: 0 0 5px black;
+  width: 30%;
+  grid-column-gap: 10px;
+  display: inline-block;
+  display: grid;
+  background-color: rgb(93, 91, 91);
+  align-items: center;
+  justify-items: center;
+  padding: 2rem;
+  margin: 1rem auto;
+  line-height: 1.6;
+}
+.linky {
+  background-color: goldenrod;
+  padding: 0 5px 0 5px;
+  margin: 5px 0 5px 0;
+  text-decoration: none;
+}
