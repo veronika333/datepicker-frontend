@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import LoginFailed from '../Modals/LoginFailed';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -12,6 +13,10 @@ const Login = () => {
         username: '',
         password: ''
     })
+
+    //Loginfailed modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
 
     const changeHandler = (e) => {
         setLoginUser({
@@ -29,15 +34,18 @@ const Login = () => {
 
                 if (!response.data.error) {
                     console.log('Front: successful signup');
+
                 } else {
-                    console.log('username already taken')
+                    console.log('username already taken');
                 }
                 // Redirect
                 history.push('/');
             })
             .catch(error => {
                 console.log('Front: signup error: ')
-                console.log(error)
+                console.log(error);
+                // loginfailed modal 
+                setShow(true);
             })
 
     }
@@ -63,6 +71,7 @@ const Login = () => {
                     </Form>
                 </Row>
             </Container >
+            <LoginFailed show={show} handleClose={handleClose} />
         </div>
     );
 }
