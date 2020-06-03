@@ -8,18 +8,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 const Login = () => {
-  let history = useHistory();
-  const [loginUser, setLoginUser] = useState({
-    username: "",
-    password: "",
-  });
-  const changeHandler = (e) => {
-    setLoginUser({
-      ...loginUser,
-      [e.target.name]: e.target.value,
+    let history = useHistory();
+    const [loginUser, setLoginUser] = useState({
+        username: "",
+        password: "",
     });
-  };
-  
+
     //Loginfailed modal
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
