@@ -17,17 +17,17 @@ const Login = () => {
   };
 
   // send registration from front to back
-  const submitHandler = (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:8010/login/send", loginUser)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+//   const submitHandler = (e) => {
+//     e.preventDefault();
+//     axios
+//       .post("http://localhost:8010/login/send", loginUser)
+//       .then((response) => {
+//         console.log(response.data);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   };
 
     // send registration from front to back
     const submitHandler = (e) => {
