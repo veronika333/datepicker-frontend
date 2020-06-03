@@ -6,6 +6,7 @@ import MainNav from "./Components/MainNav/MainNav";
 import Home from "./Components/Home/Home";
 import Registration from './Components/Registration/Registration';
 import Login from './Components/Login/Login';
+import Events from './Components/Events/Events';
 
 //import Calendar from './Components/Calendar/Calendar';
 
@@ -19,7 +20,7 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/register" component={Registration} />
             <Route path="/login" component={Login} />
-            {/* <Route path="/event" component={Events} /> */}
+            <Route path="/event" component={Events} />
           </Switch>
         </main>
       </Router>
