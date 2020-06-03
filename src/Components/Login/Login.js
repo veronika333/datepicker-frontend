@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 const Login = () => {
     let history = useHistory();
@@ -42,15 +45,24 @@ const Login = () => {
 
     return (
         <div>
-            <form onSubmit={submitHandler} >
-                <label htmlFor="username">
-                    <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="password">
-                    <input type="password" id="password" name="password" onChange={changeHandler}></input>
-                </label>
-                <button type="submit" >Submit</button>
-            </form>
+            <Container>
+                <Row className="justify-content-md-center" >
+                    <Form style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} onSubmit={submitHandler}>
+                        <h3>
+                            Login
+                </h3>
+                        <Form.Group controlId="username">
+                            <Form.Label>User name</Form.Label>
+                            <Form.Control type="text" name="username" onChange={changeHandler} placeholder="User name" required />
+                        </Form.Group>
+                        <Form.Group controlId="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" name="password" onChange={changeHandler} placeholder="Password" required />
+                        </Form.Group>
+                        <Button type="submit" >Submit</Button>
+                    </Form>
+                </Row>
+            </Container >
         </div>
     );
 }
