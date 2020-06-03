@@ -70,7 +70,7 @@ const Registration = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name="password" placeholder="Password" onChange={changeHandler} required />
                         </Form.Group>
-                        <Button type="submit" >Submit</Button>
+                        <Button type="submit" variant="success">Submit</Button>
                         <Form.Text className="text-muted">By signing up you accept Datepicker's Terms of service and Privacy policy</Form.Text>
                     </Form>
                 </Row >

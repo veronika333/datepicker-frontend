@@ -32,7 +32,7 @@ const Event = () => {
                     <Card.Subtitle>{loadedPost.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">The event will take place {loadedPost.date}</Card.Subtitle>
                     <Card.Text>{loadedPost.description}</Card.Text>
-                    <Button variant="outline-info"><Link to="/event" className="links">Go Back</Link></Button>
+                    <Button variant="success"><Link to="/event" className="links">Go Back</Link></Button>
                     <br />
                 </Card>
             </div>

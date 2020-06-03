@@ -9,16 +9,16 @@ const MainNav = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" >
                 <Nav className="ml-auto">
-                    <Link className="d-inline p-2 text-black" to="/">
+                    <Link className="d-inline p-2 text-black" to="/" style={{ color: 'black' }}>
                         Home
           </Link>
-                    <Link className="d-inline p-2 text-black" to="/register">
+                    <Link className="d-inline p-2 text-black" to="/register" style={{ color: 'black' }}>
                         Register
           </Link>
-                    <Link className="d-inline p-2 text-black" to="/login">
+                    <Link className="d-inline p-2 text-black" to="/login" style={{ color: 'black' }}>
                         Login
           </Link>
-                    <Link className="d-inline p-2 text-black" to="/event">
+                    <Link className="d-inline p-2 text-black" to="/event" style={{ color: 'black' }}>
                         Event
           </Link>
                 </Nav>

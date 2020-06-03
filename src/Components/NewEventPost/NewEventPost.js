@@ -59,7 +59,7 @@ const NewEventPost = () => {
                         />
                     </Form.Group>
 
-                    <Button className="btn" type="submit">
+                    <Button variant="success" type="submit">
                         Add Event
         </Button>
                 </Form>
