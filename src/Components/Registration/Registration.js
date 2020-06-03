@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-const Registration = () => {
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
+const Registration = () => {
+    let history = useHistory();
     const [newUser, setNewUser] = useState({
         firstname: '',
         lastname: '',
@@ -28,6 +34,7 @@ const Registration = () => {
                 console.log(response.statusText);
                 console.log(response.headers);
                 console.log(response.config);
+                history.push('/');
             })
             .catch(err => {
                 console.log(err)
@@ -36,26 +43,38 @@ const Registration = () => {
 
 
     return (
-        <div>
-            <form onSubmit={submitHandler}>
-                <label htmlFor="firstname">
-                    <input type="text" id="firstname" name="firstname" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="lastname">
-                    <input type="text" id="lastname" name="lastname" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="username">
-                    <input type="text" id="username" name="username" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="email">
-                    <input type="text" id="email" name="email" onChange={changeHandler}></input>
-                </label>
-                <label htmlFor="password">
-                    <input type="password" id="password" name="passwrod" onChange={changeHandler}></input>
-                </label>
-                <button type="submit" >Submit</button>
-
-            </form>
+        <div >
+            <Container >
+                <Row className="justify-content-md-center">
+                    < Form style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} onSubmit={submitHandler}>
+                        <h3>
+                            Registration Form
+                </h3>
+                        <Form.Group controlId="firstname">
+                            <Form.Label>First name</Form.Label>
+                            <Form.Control type="text" name="firstname" placeholder="First name" onChange={changeHandler} required />
+                        </Form.Group>
+                        <Form.Group controlId="lastname">
+                            <Form.Label>Last name</Form.Label>
+                            <Form.Control type="text" name="lastname" placeholder="Last name" onChange={changeHandler} required />
+                        </Form.Group>
+                        <Form.Group controlId="username">
+                            <Form.Label>User name</Form.Label>
+                            <Form.Control type="text" name="username" placeholder="User name" onChange={changeHandler} required />
+                        </Form.Group>
+                        <Form.Group controlId="email">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="text" name="email" placeholder="datepicker@email.com" onChange={changeHandler} required />
+                        </Form.Group>
+                        <Form.Group controlId="password">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" name="passwrod" placeholder="Password" onChange={changeHandler} required />
+                        </Form.Group>
+                        <Button type="submit" >Submit</Button>
+                        <Form.Text className="text-muted">By signing up you accept Datepicker's Terms of service and Privacy policy</Form.Text>
+                    </Form>
+                </Row >
+            </Container >
         </div>
     );
 }
