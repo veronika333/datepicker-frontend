@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 
-const NewEventPost = () => {
+const NewEventPost = ({ updateHandler }) => {
     const [newEventPost, setnewEventPost] = useState({
         title: "",
         description: "",
@@ -59,7 +59,7 @@ const NewEventPost = () => {
                         />
                     </Form.Group>
 
-                    <Button variant="success" type="submit">
+                    <Button variant="success" type="submit" onClick={updateHandler}>
                         Add Event
         </Button>
                 </Form>

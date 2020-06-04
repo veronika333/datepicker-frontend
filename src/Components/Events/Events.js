@@ -33,6 +33,13 @@ const Events = () => {
             });
     };
 
+
+
+    // Update Postlist when the button on NewEventPost.js clicked
+    const updateHandler = () => {
+        window.location.reload(false);
+    }
+
     const PostList = post.map((p) => {
         return (
             <div key={p._id} >
@@ -56,7 +63,7 @@ const Events = () => {
         <Container>
             <Row>
                 <Col>
-                    <NewEventPost />
+                    <NewEventPost updateHandler={updateHandler} />
                 </Col>
                 <Col>
                     <Switch>
