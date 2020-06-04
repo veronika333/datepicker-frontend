@@ -8,10 +8,16 @@ import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import EventPopup from '../EventPopup/EventPopup';
 
 const Events = () => {
     const [post, setPost] = useState([]);
     let match = useRouteMatch();
+
+//EventPopup modal
+const showModal = () => {
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);}
 
     useEffect(() => {
         axios.get("http://localhost:8010/event")
@@ -22,21 +28,23 @@ const Events = () => {
             });
     }, []);
 
-    const removeHandler = (_id) => {
-        console.log(_id);
-        axios.delete('http://localhost:8010/event/' + _id)
-            .then(() => {
-                return axios.get("http://localhost:8010/event");
-            })
-            .then(response => {
-                setPost(response.data);
-            });
-    };
+    // const removeHandler = (_id) => {
+    //     console.log(_id);
+    //     axios.delete('http://localhost:8010/event/' + _id)
+    //         .then(() => {
+    //             return axios.get("http://localhost:8010/event");
+    //         })
+    //         .then(response => {
+    //             setPost(response.data);
+    //         });
+    // };
 
     const PostList = post.map((p) => {
         return (
             <div key={p._id} >
-                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p.id}`} remove={() => removeHandler(p.id)} />
+                <EventCard title={p.title} description={p.description} date={p.date}>
+                <EventPopup showModal={showModal} />
+                    </EventCard> 
                 {/* <Card>
                     <Card.Body>
                         <Card.Title>Event: {p.title}</Card.Title>
