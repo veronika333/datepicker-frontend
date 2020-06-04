@@ -35,8 +35,8 @@ const Events = () => {
 
     const PostList = post.map((p) => {
         return (
-            <div  >
-                <EventCard key={p._id} title={p.title} description={p.description} date={p.date} link={`${match.url}/${p.id}`} remove={() => removeHandler(p.id)} />
+            <div key={p._id} >
+                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p.id}`} remove={() => removeHandler(p.id)} />
                 {/* <Card>
                     <Card.Body>
                         <Card.Title>Event: {p.title}</Card.Title>

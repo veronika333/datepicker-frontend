@@ -46,7 +46,7 @@ const NewEventPost = () => {
                         <Form.Label>Description</Form.Label>
                         <Form.Control
                             type="textarea"
-                            name="desription"
+                            name="description"
                             onChange={changeValueHandler} placeholder="Description"
                         />
                     </Form.Group>
