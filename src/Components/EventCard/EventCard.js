@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-const EventCard = ({ title, description, date, showModal }) => {
+const EventCard = ({ title, description, date, handleShow }) => {
     return (
         <Card>
             <Card.Body>
@@ -12,7 +12,7 @@ const EventCard = ({ title, description, date, showModal }) => {
                 <Card.Text>{date}</Card.Text>
                 {/* <Link to={link} >Read More</Link> */}
                 {/* <Button onClick={remove}>Remove Event</Button> */}
-                <Button onClick={showModal}>Read More</Button>
+                <Button onClick={handleShow}>Read More</Button>
             </Card.Body>
         </Card>
     );
