@@ -7,7 +7,6 @@ import Home from "./Components/Home/Home";
 import Registration from './Components/Registration/Registration';
 import Login from './Components/Login/Login';
 import Events from './Components/Events/Events';
-
 //import Calendar from './Components/Calendar/Calendar';
 
 function App() {

@@ -9,7 +9,7 @@ const Event = () => {
     const [loadedPost, setLoadedPost] = useState();
     let { eventId } = useParams();
     //let eventId = window.location.pathname;
-
+    const {isShowing, toggle} = useModal();
     useEffect(() => {
         //use fetch only when i dont have data yet
         if (!loadedPost) {
