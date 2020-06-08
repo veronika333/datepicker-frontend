@@ -39,7 +39,7 @@ const Login = () => {
                     console.log('username already taken');
                 }
                 // Redirect
-                history.push('/');
+                history.push('/event');
             })
             .catch(error => {
                 console.log('Front: signup error: ')
