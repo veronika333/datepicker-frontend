@@ -18,9 +18,9 @@ const MainNav = () => {
                     <Link className="d-inline p-2 text-black" to="/login" style={{ color: 'black' }}>
                         Login
           </Link>
-                    <Link className="d-inline p-2 text-black" to="/event" style={{ color: 'black' }}>
+                    {/*  <Link className="d-inline p-2 text-black" to="/event" style={{ color: 'black' }}>
                         Event
-          </Link>
+          </Link> */}
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
