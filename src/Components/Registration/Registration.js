@@ -40,7 +40,7 @@ const Registration = () => {
         console.log(response.statusText);
         console.log(response.headers);
         console.log(response.config);
-        history.push("/");
+        history.push("/event");
       })
       .catch((err) => {
         console.log(err);
