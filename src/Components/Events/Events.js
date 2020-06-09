@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useRouteMatch, Route, Switch } from "react-router-dom";
+import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
 //import postinfo from "./postinfo";
-//import Event from "../Event/Event";
+import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
 import NewEventPost from "../NewEventPost/NewEventPost";
 import axios from "axios";
@@ -10,14 +10,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ReadMore from '../ReadMorePopup/ReadMore';
 import useModal from '../Event/useModal';
-import Logout from '../Logout/Logout';
-
-
 
 const Events = () => {
 const [post, setPost] = useState([]);
     let match = useRouteMatch();
-
+  
     useEffect(() => {
         axios.get("http://localhost:8010/event")
             .then((response) => {
@@ -43,10 +40,12 @@ const [post, setPost] = useState([]);
     //         });
     // };
 
+
      // Update Postlist when the button on NewEventPost.js clicked
     const updateHandler = () => {
         window.location.reload(false);
     }
+
 
     const PostList = post.map((p) => {
         return (
@@ -64,34 +63,31 @@ const [post, setPost] = useState([]);
                         <Button variant="outline-info" onClick={() => removeHandler(p._id)}>Delete</Button>
                     </Card.Body>
                 </Card> */}
-
             </div>
         )
     });
     return (
         <Container>
-            <Row >
-                <Col >
-                    <NewEventPost updateHandler={updateHandler} />
-                    <Row className="justify-content-md-center">
-                        <Logout />
-                    </Row>
+            <Row>
+                <Col>
+                    <NewEventPost />
                 </Col>
                 <Col>
                     <Switch>
-                        {/* <Route path="/event/:eventId"> */}
+                        <Route path="/event/:eventId">
+                            <Event />
+                        </Route>
                         <Route path={match.path}>
-                            <Col style={{
-                                margin: '20px'
-                            }}>
+                            <div className="postsBox">
+                                <br />
                                 <h1>LATEST EVENTS</h1>
-                            </Col>
-                            {PostList}
+                                {PostList}
+                            </div>
                         </Route>
                     </Switch>
                 </Col>
             </Row>
-        </Container >
+        </Container>
     );
     };
 
