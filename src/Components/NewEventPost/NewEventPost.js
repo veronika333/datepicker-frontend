@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 
-const NewEventPost = () => {
+const NewEventPost = ({ updateHandler }) => {
     const [newEventPost, setnewEventPost] = useState({
         title: "",
         description: "",
@@ -30,9 +30,9 @@ const NewEventPost = () => {
 
     return (
         <>
-            <Row>
+            <Row className="justify-content-md-center" style={{ marginTop: '5rem' }}>
                 <Form onSubmit={addEventHandler} style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} >
-                    <h3 className="middle">Add new event</h3>
+                    <h3 className="middle">Add New Event</h3>
                     <Form.Group controlId="title">
                         <Form.Label>Title</Form.Label>
                         <Form.Control
@@ -46,7 +46,7 @@ const NewEventPost = () => {
                         <Form.Label>Description</Form.Label>
                         <Form.Control
                             type="textarea"
-                            name="desription"
+                            name="description"
                             onChange={changeValueHandler} placeholder="Description"
                         />
                     </Form.Group>
@@ -59,7 +59,7 @@ const NewEventPost = () => {
                         />
                     </Form.Group>
 
-                    <Button variant="success" type="submit">
+                    <Button variant="success" type="submit" onClick={updateHandler}>
                         Add Event
         </Button>
                 </Form>
