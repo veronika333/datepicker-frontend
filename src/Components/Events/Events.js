@@ -16,9 +16,6 @@ const Events = () => {
     const [post, setPost] = useState([]);
     let match = useRouteMatch();
 
-    //EventPopup modal
-    //const showModal = () => {
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
