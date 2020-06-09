@@ -5,52 +5,81 @@ import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
 import NewEventPost from "../NewEventPost/NewEventPost";
 import axios from "axios";
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Logout from '../Logout/Logout';
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Logout from "../Logout/Logout";
+import DeleteConfirmation from "../Modals/DeleteConfirmation";
 
 const Events = () => {
-    const [post, setPost] = useState([]);
-    let match = useRouteMatch();
+  const [post, setPost] = useState([]);
+  //let { _id } = useParams();
+  let match = useRouteMatch();
 
-    useEffect(() => {
-        axios.get("http://localhost:8010/event")
-            .then((response) => {
-                const posts = response.data;
-                setPost(posts);
-                console.log(posts);
-            });
-    }, []);
-    // useEffect(() => {
-    //     axios.get("http://localhost:8010/event/:eventId").then((response) => {
-    //       console.log(response.data)
-    //     })
-    //   })
+  useEffect(() => {
+    axios.get("http://localhost:8010/event").then((response) => {
+      const posts = response.data;
+      setPost(posts);
+      console.log(posts);
+    });
+  }, []);
 
-    // const removeHandler = (_id) => {
-    //     console.log(_id);
-    //     axios.delete('http://localhost:8010/event/' + _id)
-    //         .then(() => {
-    //             return axios.get("http://localhost:8010/event");
-    //         })
-    //         .then(response => {
-    //             setPost(response.data);
-    //         });
-    // };
+  //Modal for delete
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    // Update Postlist when the button on NewEventPost.js clicked
-    const updateHandler = () => {
-        window.location.reload(false);
-    }
+  const deleteHandler = (_id) => {
+    axios
+      .delete("http://localhost:8010/event/" + _id)
+      .then(() => {
+        return axios.get("http://localhost:8010/event");
+      })
+      .then((response) => {
+        setPost(response.data);
+      });
+  };
 
+  // useEffect(() => {
+  //     axios.get("http://localhost:8010/event/:eventId").then((response) => {
+  //       console.log(response.data)
+  //     })
+  //   })
 
-    const PostList = post.map((p) => {
-        return (
-            <div key={p._id}>
-                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} />
-                {/* <Card>
+  // const removeHandler = (_id) => {
+  //     console.log(_id);
+  //     axios.delete('http://localhost:8010/event/' + _id)
+  //         .then(() => {
+  //             return axios.get("http://localhost:8010/event");
+  //         })
+  //         .then(response => {
+  //             setPost(response.data);
+  //         });
+  // };
+
+  // Update Postlist when the button on NewEventPost.js clicked
+  const updateHandler = () => {
+    window.location.reload(false);
+  };
+
+  const PostList = post.map((p) => {
+    return (
+      <div key={p._id}>
+        <EventCard
+          title={p.title}
+          description={p.description}
+          date={p.date}
+          link={`${match.url}/${p._id}`}
+          handleShow={handleShow}
+        />
+        <DeleteConfirmation
+          show={show}
+          handleClose={handleClose}
+          deleteHandler={() => deleteHandler(p._id)}
+        />
+
+        {/* <Card>
                     <Card.Body>
                         <Card.Title>Event: {p.title}</Card.Title>
                         <Card.Subtitle>The organizer is {p.username}</Card.Subtitle>
@@ -62,36 +91,38 @@ const Events = () => {
                         <Button variant="outline-info" onClick={() => removeHandler(p._id)}>Delete</Button>
                     </Card.Body>
                 </Card> */}
-            </div>
-        )
-    });
-    return (
-        <Container>
-            <Row>
-                <Col >
-                    <NewEventPost updateHandler={updateHandler} />
-                    <Row className="justify-content-md-center">
-                        <Logout />
-                    </Row>
-                </Col>
-                <Col>
-                    <Switch>
-                        <Route path="/event/:eventId">
-                            <Event />
-                        </Route>
-                        <Route path={match.path}>
-                            <Col style={{
-                                margin: '20px'
-                            }}>
-                                <h1>LATEST EVENTS</h1>
-                            </Col>
-                            {PostList}
-                        </Route>
-                    </Switch>
-                </Col>
-            </Row>
-        </Container>
+      </div>
     );
+  });
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <NewEventPost updateHandler={updateHandler} />
+          <Row className="justify-content-md-center">
+            <Logout />
+          </Row>
+        </Col>
+        <Col>
+          <Switch>
+            <Route path="/event/:eventId">
+              <Event />
+            </Route>
+            <Route path={match.path}>
+              <Col
+                style={{
+                  margin: "20px",
+                }}
+              >
+                <h1>LATEST EVENTS</h1>
+              </Col>
+              {PostList}
+            </Route>
+          </Switch>
+        </Col>
+      </Row>
+    </Container>
+  );
 };
 
 export default Events;
