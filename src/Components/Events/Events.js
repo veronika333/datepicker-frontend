@@ -11,16 +11,10 @@ import Row from 'react-bootstrap/Row';
 import ReadMore from '../ReadMorePopup/ReadMore';
 import useModal from '../Event/useModal';
 
-
 const Events = () => {
-    const [post, setPost] = useState([]);
+const [post, setPost] = useState([]);
     let match = useRouteMatch();
   
-    const [isShowing, setIsShowing] = useState(false);
-
-    function toggle() {
-      setIsShowing(!isShowing);
-    }
     useEffect(() => {
         axios.get("http://localhost:8010/event")
             .then((response) => {
@@ -29,7 +23,12 @@ const Events = () => {
                 console.log(posts);
             });
     }, []);
-    
+    // useEffect(() => {
+    //     axios.get("http://localhost:8010/event/:eventId").then((response) => {
+    //       console.log(response.data)
+    //     })
+    //   })
+
     // const removeHandler = (_id) => {
     //     console.log(_id);
     //     axios.delete('http://localhost:8010/event/' + _id)
@@ -43,8 +42,8 @@ const Events = () => {
 
     const PostList = post.map((p) => {
         return (
-            <div  >
-                <EventCard key={p._id} title={p.title} description={p.description} date={p.date} />
+            <div key={p._id}>
+                <EventCard  title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} />
                 {/* <Card>
                     <Card.Body>
                         <Card.Title>Event: {p.title}</Card.Title>
@@ -83,6 +82,6 @@ const Events = () => {
             </Row>
         </Container>
     );
-};
+    };
 
 export default Events;
