@@ -14,7 +14,7 @@ import useModal from '../Event/useModal';
 const Events = () => {
 const [post, setPost] = useState([]);
     let match = useRouteMatch();
-  
+
     useEffect(() => {
         axios.get("http://localhost:8010/event")
             .then((response) => {
