@@ -1,17 +1,24 @@
-import React from "react";
+
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import ReadMore from '../ReadMorePopup/ReadMore';
+import useModal from '../Event/useModal';
 
-const EventCard = ({ title, description, date, handleShow }) => {
+const EventCard = ({ title, description, date, link }) => {
+    
+    
     return (
-        <Card style={{ margin: '10px' }} >
+        <Card>
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{description}</Card.Text>
                 <Card.Text>{date}</Card.Text>
-                {/* <Link to={link} >Read More</Link> */}
-                {/* <Button onClick={remove}>Remove Event</Button> */}
-                <Button variant="success" onClick={handleShow}>Read More</Button>
+                <Link to={link} className="linky">
+        Read More
+      </Link>
+      
             </Card.Body>
         </Card>
     );
