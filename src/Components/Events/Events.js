@@ -43,6 +43,10 @@ const [post, setPost] = useState([]);
     //         });
     // };
 
+     // Update Postlist when the button on NewEventPost.js clicked
+    const updateHandler = () => {
+        window.location.reload(false);
+    }
 
     const PostList = post.map((p) => {
         return (
