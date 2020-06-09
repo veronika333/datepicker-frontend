@@ -7,18 +7,18 @@ import ReadMore from '../ReadMorePopup/ReadMore';
 import useModal from '../Event/useModal';
 
 const EventCard = ({ title, description, date, link }) => {
-    
-    
+
+
     return (
-        <Card>
+        <Card style={{ margin: '10px' }} >
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{description}</Card.Text>
                 <Card.Text>{date}</Card.Text>
                 <Link to={link} className="linky">
-        Read More
+                    Read More
       </Link>
-      
+
             </Card.Body>
         </Card>
     );
