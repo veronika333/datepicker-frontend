@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
+import { useRouteMatch, Route, Switch } from "react-router-dom";
 //import postinfo from "./postinfo";
 //import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
@@ -9,18 +9,19 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import EventPopup from '../EventPopup/EventPopup';
+import Logout from '../Logout/Logout';
 
 
 const Events = () => {
     const [post, setPost] = useState([]);
     let match = useRouteMatch();
 
-//EventPopup modal
-//const showModal = () => {
-    
-const [show, setShow] = useState(false);
-const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);
+    //EventPopup modal
+    //const showModal = () => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         axios.get("http://localhost:8010/event")
@@ -53,45 +54,35 @@ const handleShow = () => setShow(true);
         return (
             <div key={p._id} >
                 <EventCard title={p.title} description={p.description} date={p.date} handleShow={handleShow} />
-                
-                    <EventPopup handleClose={handleClose} show={show}/>
-                {/* <Card>
-                    <Card.Body>
-                        <Card.Title>Event: {p.title}</Card.Title>
-                        <Card.Subtitle>The organizer is {p.username}</Card.Subtitle>
-                        <br />
-                        <Card.Subtitle className="mb-2 text-muted">The event will take place on the {p.date}</Card.Subtitle>
-                        <Card.Text> Description of the event:{p.description}
-                        </Card.Text>
-                        <Button variant="outline-info"><Link className="links" to={`/${post._id}`}>Read more</Link></Button>
-                        <Button variant="outline-info" onClick={() => removeHandler(p._id)}>Delete</Button>
-                    </Card.Body>
-                </Card> */}
+
+                <EventPopup handleClose={handleClose} show={show} />
             </div>
         )
     });
     return (
         <Container>
-            <Row>
-                <Col>
+            <Row >
+                <Col >
                     <NewEventPost updateHandler={updateHandler} />
+                    <Row className="justify-content-md-center">
+                        <Logout />
+                    </Row>
                 </Col>
                 <Col>
                     <Switch>
                         {/* <Route path="/event/:eventId"> */}
-                            
-                       
                         <Route path={match.path}>
-                            <div className="postsBox">
-                                <br />
+                            <Col style={{
+                                margin: '20px'
+                            }}>
                                 <h1>LATEST EVENTS</h1>
-                                {PostList}
-                            </div>
+                            </Col>
+                            {PostList}
                         </Route>
                     </Switch>
                 </Col>
             </Row>
-        </Container>
+        </Container >
     );
 };
 
