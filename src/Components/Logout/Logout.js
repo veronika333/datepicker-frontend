@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -19,8 +18,7 @@ const Logout = () => {
         <div>
             <Form onSubmit={logoutHandler} >
                 <Button variant="dark" type="submit" >
-                    Logout <Badge variant="light">Click here</Badge>
-                    <span className="sr-only">unread messages</span>
+                    Logout
                 </Button>
             </Form>
 
