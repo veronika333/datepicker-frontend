@@ -5,7 +5,14 @@ import Button from "react-bootstrap/Button";
 import ReadMore from "../ReadMorePopup/ReadMore";
 import useModal from "../Event/useModal";
 
-const EventCard = ({ title, description, date, link, handleShow }) => {
+const EventCard = ({
+  title,
+  description,
+  date,
+  link,
+  handleShow,
+  deleteHandler,
+}) => {
   return (
     <Card style={{ margin: "10px" }}>
       <Card.Body>
@@ -16,6 +23,7 @@ const EventCard = ({ title, description, date, link, handleShow }) => {
           Read More
         </Link>
         <Button onClick={handleShow}>Delete</Button>
+        <Button onClick={deleteHandler}>Test Delete</Button>
       </Card.Body>
     </Card>
   );
