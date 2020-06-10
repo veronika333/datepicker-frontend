@@ -12,6 +12,7 @@ import Logout from '../Logout/Logout';
 
 const Events = () => {
     const [post, setPost] = useState([]);
+    //const [likes, setLikes] = useState(0);
     let match = useRouteMatch();
 
     useEffect(() => {
@@ -39,6 +40,42 @@ const Events = () => {
     //         });
     // };
 
+    const addLikeHandler = (_id) => {
+        /* axios.get('http://localhost:8010/event/' + _id)
+            .then(res => {
+                setPost(res.data);
+                console.log(res.data);
+            }); */
+
+        for (let i = 0; i < post.length; i++) {
+            let pos = post[i]
+            console.log(pos);
+            pos.likes = +1;
+            return pos;
+            //setPost({ this.props. });
+        }
+        /* 
+                const postId = pos.find((p) => {
+                    return p[i]._id === _id;
+                });
+                console.log(postId)
+         */
+
+        /* 
+          const pos = { ...post[postId] }; // spread object
+          pos.likes = +1; // add new like to post object
+          const posts = [...post]; // take full array, spread it
+          posts[postId] = pos; // and add updated post to back array
+          setPost({
+              posts
+          }); */
+    }
+
+    /* const addLikeHandler = (_id) => {
+        console.log(post[0]._id);
+        setLikes(likes + 1);
+    }
+ */
 
     // Update Postlist when the button on NewEventPost.js clicked
     const updateHandler = () => {
@@ -49,7 +86,7 @@ const Events = () => {
     const PostList = post.map((p) => {
         return (
             <div key={p._id}>
-                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} />
+                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} addLikeHandler={addLikeHandler} />
                 {/* <Card>
                     <Card.Body>
                         <Card.Title>Event: {p.title}</Card.Title>

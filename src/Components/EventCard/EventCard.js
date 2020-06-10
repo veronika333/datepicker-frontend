@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import ReadMore from '../ReadMorePopup/ReadMore';
 import useModal from '../Event/useModal';
 
-const EventCard = ({ title, description, date, link }) => {
+const EventCard = ({ title, description, date, link, addLikeHandler, likes }) => {
 
 
     return (
@@ -18,6 +18,10 @@ const EventCard = ({ title, description, date, link }) => {
                 <Link to={link} className="linky">
                     Read More
       </Link>
+                <p>
+
+                    <Button onClick={addLikeHandler} >Like {likes}</Button>
+                </p>
 
             </Card.Body>
         </Card>
