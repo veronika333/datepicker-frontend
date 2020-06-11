@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  useRouteMatch,
-  Route,
-  useParams,
-  Switch,
-  Link,
-} from "react-router-dom";
-//import postinfo from "./postinfo";
+import { useRouteMatch, Route, Switch } from "react-router-dom";
 import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
 import NewEventPost from "../NewEventPost/NewEventPost";
@@ -19,21 +12,36 @@ import DeleteConfirmation from "../Modals/DeleteConfirmation";
 
 const Events = () => {
   const [post, setPost] = useState([]);
-  //let {_id} = useParams()
   let match = useRouteMatch();
-
-  useEffect(() => {
-    axios.get("http://localhost:8010/event").then((response) => {
-      const posts = response.data;
-      setPost(posts);
-      console.log(posts);
-    });
-  }, []);
-
-  //Modal for delete
+//Modal for delete
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+    useEffect(() => {
+        axios.get("http://localhost:8010/event")
+            .then((response) => {
+                const posts = response.data;
+                setPost(posts);
+                console.log(posts);
+            });
+    }, []);
+
+    const addLikeHandler = (_id) => {
+        const nextPost = post.map((p) => {
+            if (p._id === _id) {
+                return Object.assign({}, p, {
+                    likes: p.likes + "♡"
+                });
+            } else {
+                return p;
+            }
+        });
+        console.log(nextPost);
+
+        setPost(nextPost);
+    }
+
 
   const deleteHandler = (_id) => {
     console.log(_id);
@@ -60,17 +68,12 @@ const Events = () => {
     window.location.reload(false);
   };
 
-  const PostList = post.map((p) => {
-    return (
-      <div key={p._id}>
-        <EventCard
-          title={p.title}
-          description={p.description}
-          date={p.date}
-          link={`${match.url}/${p._id}`}
-          handleShow={handleShow}
-          deleteHandler={() => deleteHandler(p._id)}
-        />
+    const PostList = post.map((p) => {
+        return (
+            <div key={p._id}>
+                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} likes={p.likes} addLikeHandler={() => addLikeHandler(p._id)} handleShow={handleShow}
+          deleteHandler={() => deleteHandler(p._id)}/>
+
         <DeleteConfirmation
           show={show}
           handleClose={handleClose}
