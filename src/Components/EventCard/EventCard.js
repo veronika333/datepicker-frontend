@@ -15,12 +15,13 @@ const EventCard = ({ title, description, date, link, addLikeHandler, likes }) =>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{description}</Card.Text>
                 <Card.Text>{date}</Card.Text>
+                <Card.Text>{likes}</Card.Text>
                 <Link to={link} className="linky">
                     Read More
       </Link>
                 <p>
 
-                    <Button onClick={addLikeHandler} >Like {likes}</Button>
+                    <Button onClick={addLikeHandler} >Like</Button>
                 </p>
 
             </Card.Body>

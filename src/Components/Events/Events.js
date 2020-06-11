@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouteMatch, Route, Switch, Link } from "react-router-dom";
+import { useRouteMatch, Route, Switch, Link, useParams } from "react-router-dom";
 //import postinfo from "./postinfo";
 import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
@@ -10,10 +10,35 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Logout from '../Logout/Logout';
 
+const postList = [{
+    id: 1,
+    img: "https://source.unsplash.com/daily",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    author: "John Smith",
+    desc: "Lorem ipsum dolor sit amet, nec probo eripuit propriae no, mucius appareat moderatius id duo, duo mazim fabellas ea. Vel porro perfecto ne, omnesque disputationi ex duo. Ex illum elitr ocurreret sit. Pro ei nemore omittantur voluptatibus, dicit graeco ut pri. Eu eum duis populo discere.",
+},
+{
+    id: 2,
+    img: "https://source.unsplash.com/1600x900/?nature,water",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    author: "John Smith",
+    desc: "Lorem ipsum dolor sit amet, nec probo eripuit propriae no, mucius appareat moderatius id duo, duo mazim fabellas ea. Vel porro perfecto ne, omnesque disputationi ex duo. Ex illum elitr ocurreret sit. Pro ei nemore omittantur voluptatibus, dicit graeco ut pri. Eu eum duis populo discere.",
+},
+{
+    id: 3,
+    img: "https://source.unsplash.com/1600x900/?city",
+    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    author: "John Smith",
+    desc: "Lorem ipsum dolor sit amet, nec probo eripuit propriae no, mucius appareat moderatius id duo, duo mazim fabellas ea. Vel porro perfecto ne, omnesque disputationi ex duo. Ex illum elitr ocurreret sit. Pro ei nemore omittantur voluptatibus, dicit graeco ut pri. Eu eum duis populo discere.",
+},
+];
+
 const Events = () => {
     const [post, setPost] = useState([]);
     //const [likes, setLikes] = useState(0);
     let match = useRouteMatch();
+
+    let { eventId } = useParams();
 
     useEffect(() => {
         axios.get("http://localhost:8010/event")
@@ -41,41 +66,64 @@ const Events = () => {
     // };
 
     const addLikeHandler = (_id) => {
-        /* axios.get('http://localhost:8010/event/' + _id)
-            .then(res => {
-                setPost(res.data);
-                console.log(res.data);
-            }); */
-
-        for (let i = 0; i < post.length; i++) {
-            let pos = post[i]
-            console.log(pos);
-            pos.likes = +1;
-            return pos;
-            //setPost({ this.props. });
-        }
-        /* 
-                const postId = pos.find((p) => {
-                    return p[i]._id === _id;
+        const nextPost = post.map((p) => {
+            if (p._id === _id) {
+                return Object.assign({}, p, {
+                    likes: p.likes + 1
                 });
-                console.log(postId)
-         */
+            } else {
+                return p;
+            }
+        });
+        console.log(nextPost);
+
+        /* setPost({ p:nextPost[]}, ); */
+
+
+        /*  axios.get("http://localhost:8010/event/" + eventId)
+             .then((response) => {
+                 if (response.data.error) {
+                     console.log(response.data.error)
+                 } else {
+                     setPost({ ...post, likes: +1 })
+                 }
+             }) */
+
+
+        /* const postId = postList.findIndex((p) => {
+            return p._id === _id;
+        });
+
+        console.log(post);
+        console.log(`${postId} clicked`);
+
+        const pos = { ...post[postId] }; // spread object
+        pos.likes = +1; // add new like to post object
+        const posts = [...post]; // take full array, spread it
+        posts[postId] = pos; // and add updated post to back array
+
+        console.log(posts);
+        setPost({
+            posts
+        })   */
 
         /* 
-          const pos = { ...post[postId] }; // spread object
-          pos.likes = +1; // add new like to post object
-          const posts = [...post]; // take full array, spread it
-          posts[postId] = pos; // and add updated post to back array
-          setPost({
-              posts
-          }); */
+         const pos = post.slice();
+         console.log(pos);
+         pos[0].likes = +1;
+ 
+         const posts = [...post];
+         posts[pId] = pos;
+         console.log(pos); */
+
+
     }
 
     /* const addLikeHandler = (_id) => {
         console.log(post[0]._id);
         setLikes(likes + 1);
     }
- */
+    */
 
     // Update Postlist when the button on NewEventPost.js clicked
     const updateHandler = () => {
@@ -86,19 +134,8 @@ const Events = () => {
     const PostList = post.map((p) => {
         return (
             <div key={p._id}>
-                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} addLikeHandler={addLikeHandler} />
-                {/* <Card>
-                    <Card.Body>
-                        <Card.Title>Event: {p.title}</Card.Title>
-                        <Card.Subtitle>The organizer is {p.username}</Card.Subtitle>
-                        <br />
-                        <Card.Subtitle className="mb-2 text-muted">The event will take place on the {p.date}</Card.Subtitle>
-                        <Card.Text> Description of the event:{p.description}
-                        </Card.Text>
-                        <Button variant="outline-info"><Link className="links" to={`/${post._id}`}>Read more</Link></Button>
-                        <Button variant="outline-info" onClick={() => removeHandler(p._id)}>Delete</Button>
-                    </Card.Body>
-                </Card> */}
+                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} addLikeHandler={() => addLikeHandler(p._id)} />
+
             </div>
         )
     });
