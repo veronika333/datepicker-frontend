@@ -8,6 +8,7 @@ import Registration from './Components/Registration/Registration';
 import Login from './Components/Login/Login';
 import Events from './Components/Events/Events';
 //import Calendar from './Components/Calendar/Calendar';
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/event" component={Events} />
           </Switch>
         </main>
+        <Footer />
       </Router>
     </div>
   );
