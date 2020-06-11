@@ -19,7 +19,7 @@ import DeleteConfirmation from "../Modals/DeleteConfirmation";
 
 const Events = () => {
   const [post, setPost] = useState([]);
-  //let { _id } = useParams();
+  //let {_id} = useParams()
   let match = useRouteMatch();
 
   useEffect(() => {
@@ -38,44 +38,27 @@ const Events = () => {
   const deleteHandler = (_id) => {
     console.log(_id);
 
-    const con = alert(`Would you like to delete ${_id} ?`);
-    if (con === true) {
+    const confirm = window.confirm(`Would you like to delete ${_id} ?`);
+    if (confirm === true) {
       axios
         .delete("http://localhost:8010/event/" + _id)
         .then(() => {
           return axios.get("http://localhost:8010/event");
         })
         .then((response) => {
-          console.log(response.data);
+          //console.log(response.data);
           setPost(response.data);
         });
+    } else {
+      return axios.get("http://localhost:8010/event");
     }
-    // axios
-    //   .delete("http://localhost:8010/event/" + _id)
-    //   .then(() => {
-    //     return axios.get("http://localhost:8010/event");
-    //   })
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     setPost(response.data);
-    //   });
-    //window.location.reload(false);
+    window.location.reload(false);
   };
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:8010/event/:eventId").then((response) => {
-  //     console.log(response.data);
-  //   });
-  // });
 
   // Update Postlist when the button on NewEventPost.js clicked
   const updateHandler = () => {
     window.location.reload(false);
   };
-
-  //   function mapStateToProps({ posts }, ownProps) { // (application state, ownProps)
-  //     return { post: posts[ownProps.match.params.id] };
-  // }
 
   const PostList = post.map((p) => {
     return (
