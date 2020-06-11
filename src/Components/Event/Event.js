@@ -47,6 +47,7 @@ const Event = () => {
         </Jumbotron>
       </div>
     );
+    window.scrollTo(0, 0);
   }
   return postData;
 };
