@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouteMatch, Route, Switch, Link, useParams } from "react-router-dom";
-//import postinfo from "./postinfo";
+import { useRouteMatch, Route, Switch } from "react-router-dom";
 import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
 import NewEventPost from "../NewEventPost/NewEventPost";
@@ -10,35 +9,9 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Logout from '../Logout/Logout';
 
-const postList = [{
-    id: 1,
-    img: "https://source.unsplash.com/daily",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    author: "John Smith",
-    desc: "Lorem ipsum dolor sit amet, nec probo eripuit propriae no, mucius appareat moderatius id duo, duo mazim fabellas ea. Vel porro perfecto ne, omnesque disputationi ex duo. Ex illum elitr ocurreret sit. Pro ei nemore omittantur voluptatibus, dicit graeco ut pri. Eu eum duis populo discere.",
-},
-{
-    id: 2,
-    img: "https://source.unsplash.com/1600x900/?nature,water",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    author: "John Smith",
-    desc: "Lorem ipsum dolor sit amet, nec probo eripuit propriae no, mucius appareat moderatius id duo, duo mazim fabellas ea. Vel porro perfecto ne, omnesque disputationi ex duo. Ex illum elitr ocurreret sit. Pro ei nemore omittantur voluptatibus, dicit graeco ut pri. Eu eum duis populo discere.",
-},
-{
-    id: 3,
-    img: "https://source.unsplash.com/1600x900/?city",
-    title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    author: "John Smith",
-    desc: "Lorem ipsum dolor sit amet, nec probo eripuit propriae no, mucius appareat moderatius id duo, duo mazim fabellas ea. Vel porro perfecto ne, omnesque disputationi ex duo. Ex illum elitr ocurreret sit. Pro ei nemore omittantur voluptatibus, dicit graeco ut pri. Eu eum duis populo discere.",
-},
-];
-
 const Events = () => {
     const [post, setPost] = useState([]);
-    //const [likes, setLikes] = useState(0);
     let match = useRouteMatch();
-
-    let { eventId } = useParams();
 
     useEffect(() => {
         axios.get("http://localhost:8010/event")
@@ -48,22 +21,7 @@ const Events = () => {
                 console.log(posts);
             });
     }, []);
-    // useEffect(() => {
-    //     axios.get("http://localhost:8010/event/:eventId").then((response) => {
-    //       console.log(response.data)
-    //     })
-    //   })
 
-    // const removeHandler = (_id) => {
-    //     console.log(_id);
-    //     axios.delete('http://localhost:8010/event/' + _id)
-    //         .then(() => {
-    //             return axios.get("http://localhost:8010/event");
-    //         })
-    //         .then(response => {
-    //             setPost(response.data);
-    //         });
-    // };
 
     const addLikeHandler = (_id) => {
         const nextPost = post.map((p) => {
@@ -81,12 +39,6 @@ const Events = () => {
 
 
     }
-
-    /* const addLikeHandler = (_id) => {
-        console.log(post[0]._id);
-        setLikes(likes + 1);
-    }
-    */
 
     // Update Postlist when the button on NewEventPost.js clicked
     const updateHandler = () => {
