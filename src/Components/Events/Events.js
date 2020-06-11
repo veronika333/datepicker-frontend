@@ -69,7 +69,7 @@ const Events = () => {
         const nextPost = post.map((p) => {
             if (p._id === _id) {
                 return Object.assign({}, p, {
-                    likes: p.likes + 1
+                    likes: p.likes + "♡"
                 });
             } else {
                 return p;
@@ -77,44 +77,7 @@ const Events = () => {
         });
         console.log(nextPost);
 
-        /* setPost({ p:nextPost[]}, ); */
-
-
-        /*  axios.get("http://localhost:8010/event/" + eventId)
-             .then((response) => {
-                 if (response.data.error) {
-                     console.log(response.data.error)
-                 } else {
-                     setPost({ ...post, likes: +1 })
-                 }
-             }) */
-
-
-        /* const postId = postList.findIndex((p) => {
-            return p._id === _id;
-        });
-
-        console.log(post);
-        console.log(`${postId} clicked`);
-
-        const pos = { ...post[postId] }; // spread object
-        pos.likes = +1; // add new like to post object
-        const posts = [...post]; // take full array, spread it
-        posts[postId] = pos; // and add updated post to back array
-
-        console.log(posts);
-        setPost({
-            posts
-        })   */
-
-        /* 
-         const pos = post.slice();
-         console.log(pos);
-         pos[0].likes = +1;
- 
-         const posts = [...post];
-         posts[pId] = pos;
-         console.log(pos); */
+        setPost(nextPost);
 
 
     }
@@ -134,7 +97,7 @@ const Events = () => {
     const PostList = post.map((p) => {
         return (
             <div key={p._id}>
-                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} addLikeHandler={() => addLikeHandler(p._id)} />
+                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} likes={p.likes} addLikeHandler={() => addLikeHandler(p._id)} />
 
             </div>
         )
