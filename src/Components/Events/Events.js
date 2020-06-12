@@ -31,7 +31,8 @@ const Events = () => {
         const nextPost = post.map((p) => {
             if (p._id === _id) {
                 return Object.assign({}, p, {
-                    likes: p.likes + "♡"
+                    //likes: p.likes + "♡"
+                  likes: p.likes + 1
                 });
             } else {
                 return p;
@@ -40,6 +41,18 @@ const Events = () => {
         console.log(nextPost);
 
         setPost(nextPost);
+              //axios.patch(url[, data[, config]])
+        let config = {
+            headers: {
+              "Content-Type": "application/json",
+            },};
+axios.patch("http://localhost:8010/event/" + _id, nextPost, config)
+.then((response) => {
+    console.log(response)
+})
+.catch((err) => {
+    console.log(err)}
+    )
     }
 
 
