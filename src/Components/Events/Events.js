@@ -13,48 +13,66 @@ import DeleteConfirmation from "../Modals/DeleteConfirmation";
 const Events = () => {
   const [post, setPost] = useState([]);
   let match = useRouteMatch();
-//Modal for delete
+  //Modal for delete
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-    useEffect(() => {
-        axios.get("http://localhost:8010/event")
-            .then((response) => {
-                const posts = response.data;
-                setPost(posts);
-                console.log(posts);
-            });
-    }, []);
+  useEffect(() => {
+    axios.get("http://localhost:8010/event").then((response) => {
+      const posts = response.data;
+      setPost(posts);
+      console.log(posts);
+    });
+  }, []);
 
-    const addLikeHandler = (_id) => {
-        const nextPost = post.map((p) => {
-            if (p._id === _id) {
-                return Object.assign({}, p, {
-                    //likes: p.likes + "♡"
-                  likes: p.likes + 1
-                });
-            } else {
-                return p;
-            }
+  const addLikeHandler = (_id) => {
+    const nextPost = post.map((p) => {
+      if (p._id === _id) {
+        return Object.assign({}, p, {
+          //likes: p.likes + "♡"
+          likes: p.likes + 1,
         });
-        console.log(nextPost);
+      } else {
+        return p;
+      }
+    });
+    console.log(nextPost);
 
-        setPost(nextPost);
-              //axios.patch(url[, data[, config]])
-        let config = {
-            headers: {
-              "Content-Type": "application/json",
-            },};
-axios.patch("http://localhost:8010/event/" + _id, nextPost, config)
-.then((response) => {
-    console.log(response)
-})
-.catch((err) => {
-    console.log(err)}
-    )
-    }
+    //Save likes function
+    //     const saveLikes = (newLike) => {
+    //       const likes = post.map((like) => {
+    //         if (newLike.likes === likes) {
+    //           return Object.assign({}, newLike, {
+    //             likes: newLike.likes},
+    //             newLike.push({
+    //               likes: likes
+    //              })
+    //             } else {
+    //             return likes;
+    //           }
+    // })
 
+    // };
+
+    setPost(nextPost);
+    //axios.patch(url[, data[, config]])
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    axios
+      .patch("http://localhost:8010/event/" + _id, nextPost, config)
+      .then((response) => {
+        //saveLikes();
+        console.log(response);
+        //setPost(nextPost);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const deleteHandler = (_id) => {
     console.log(_id);
@@ -81,11 +99,19 @@ axios.patch("http://localhost:8010/event/" + _id, nextPost, config)
     window.location.reload(false);
   };
 
-    const PostList = post.map((p) => {
-        return (
-            <div key={p._id}>
-                <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} likes={p.likes} addLikeHandler={() => addLikeHandler(p._id)} handleShow={handleShow}
-          deleteHandler={() => deleteHandler(p._id)}/>
+  const PostList = post.map((p) => {
+    return (
+      <div key={p._id}>
+        <EventCard
+          title={p.title}
+          description={p.description}
+          date={p.date}
+          link={`${match.url}/${p._id}`}
+          likes={p.likes}
+          addLikeHandler={() => addLikeHandler(p._id)}
+          handleShow={handleShow}
+          deleteHandler={() => deleteHandler(p._id)}
+        />
 
         <DeleteConfirmation
           show={show}
