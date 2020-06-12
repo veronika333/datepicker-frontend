@@ -3,6 +3,7 @@ import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 const NewEventPost = ({ updateHandler }) => {
     const [newEventPost, setnewEventPost] = useState({
@@ -30,40 +31,42 @@ const NewEventPost = ({ updateHandler }) => {
 
     return (
         <>
-            <Row className="justify-content-md-center" style={{ marginTop: '5rem' }}>
-                <Form onSubmit={addEventHandler} style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} >
-                    <h3 className="middle">Add New Event</h3>
-                    <Form.Group controlId="title">
-                        <Form.Label>Title</Form.Label>
-                        <Form.Control
-                            type="text"
-                            name="title"
-                            onChange={changeValueHandler}
-                            placeholder="Title"
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="description">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control
-                            type="textarea"
-                            name="description"
-                            onChange={changeValueHandler} placeholder="Description"
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="date">
-                        <Form.Label>Date</Form.Label>
-                        <Form.Control
-                            type="date"
-                            name="date"
-                            onChange={changeValueHandler}
-                        />
-                    </Form.Group>
+            <Jumbotron style={{ background: 'none', paddingBottom: '5px' }}>
+                <Row >
+                    <Form onSubmit={addEventHandler} style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} >
+                        <h3 style={{ textAlign: 'center' }}>Add New Event</h3>
+                        <Form.Group controlId="title">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="title"
+                                onChange={changeValueHandler}
+                                placeholder="Title"
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="description">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                type="textarea"
+                                name="description"
+                                onChange={changeValueHandler} placeholder="Description"
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="date">
+                            <Form.Label>Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                name="date"
+                                onChange={changeValueHandler}
+                            />
+                        </Form.Group>
 
-                    <Button variant="success" type="submit" onClick={updateHandler}>
-                        Add Event
+                        <Button variant="success" type="submit" onClick={updateHandler}>
+                            Add Event
         </Button>
-                </Form>
-            </Row>
+                    </Form>
+                </Row>
+            </Jumbotron>
         </>
     );
 };

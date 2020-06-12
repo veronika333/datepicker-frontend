@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 const Login = () => {
     let history = useHistory();
@@ -53,24 +54,26 @@ const Login = () => {
 
     return (
         <div>
-            <Container>
-                <Row className="justify-content-md-center" >
-                    <Form style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} onSubmit={submitHandler}>
-                        <h3>
-                            Login
+            <Jumbotron style={{ background: 'none' }}>
+                <Container>
+                    <Row className="justify-content-md-center" >
+                        <Form style={{ width: '20rem', background: 'white', margin: '20px', padding: '20px', borderRadius: '5px' }} onSubmit={submitHandler}>
+                            <h3>
+                                Login
                 </h3>
-                        <Form.Group controlId="username">
-                            <Form.Label>User name</Form.Label>
-                            <Form.Control type="text" name="username" onChange={changeHandler} placeholder="User name" required />
-                        </Form.Group>
-                        <Form.Group controlId="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" name="password" onChange={changeHandler} placeholder="Password" required />
-                        </Form.Group>
-                        <Button variant="success" type="submit" >Submit</Button>
-                    </Form>
-                </Row>
-            </Container >
+                            <Form.Group controlId="username">
+                                <Form.Label>User name</Form.Label>
+                                <Form.Control type="text" name="username" onChange={changeHandler} placeholder="User name" required />
+                            </Form.Group>
+                            <Form.Group controlId="password">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" name="password" onChange={changeHandler} placeholder="Password" required />
+                            </Form.Group>
+                            <Button variant="success" type="submit" >Submit</Button>
+                        </Form>
+                    </Row>
+                </Container >
+            </Jumbotron>
             <LoginFailed show={show} handleClose={handleClose} />
         </div>
     );

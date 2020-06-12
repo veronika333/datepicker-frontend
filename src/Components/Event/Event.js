@@ -3,6 +3,8 @@ import { useRouteMatch, Link, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Toast from 'react-bootstrap/Toast';
 
 const Event = () => {
   const [loadedPost, setLoadedPost] = useState();
@@ -25,22 +27,27 @@ const Event = () => {
   if (loadedPost) {
     postData = (
       <div>
-        <Card>
-          <Card.Title>{loadedPost.title}</Card.Title>
-          {/* <Card.Subtitle>{loadedPost.username}</Card.Subtitle> */}
-          <Card.Subtitle className="mb-2 text-muted">
-            The event will take place {loadedPost.date}
-          </Card.Subtitle>
-          <Card.Text>{loadedPost.description}</Card.Text>
-          <Button variant="success">
-            <Link to="/event" className="links">
-              Go Back
+        <Jumbotron style={{ background: 'white' }}>
+          <Toast.Header closeButton={false}>
+            <strong className="mr-auto">Tomcat</strong>
+          </Toast.Header>
+          <Toast.Body>
+            <Card.Title>{loadedPost.title}</Card.Title>
+            {/* <Card.Subtitle>{loadedPost.username}</Card.Subtitle> */}
+            <Card.Subtitle className="mb-2 text-muted">
+              The event will take place {loadedPost.date}
+            </Card.Subtitle>
+            <Card.Text>{loadedPost.description}</Card.Text>
+            <Button variant="outline-secondary">
+              <Link to="/event" className="d-inline p-2 text-black" style={{ color: 'black' }}>
+                Go Back
             </Link>
-          </Button>
-          <br />
-        </Card>
+            </Button>
+          </Toast.Body>
+        </Jumbotron>
       </div>
     );
+    window.scrollTo(0, 0);
   }
   return postData;
 };

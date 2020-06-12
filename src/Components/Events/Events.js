@@ -11,12 +11,12 @@ import Logout from "../Logout/Logout";
 import DeleteConfirmation from "../Modals/DeleteConfirmation";
 
 const Events = () => {
-  const [post, setPost] = useState([]);
-  let match = useRouteMatch();
-//Modal for delete
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const [post, setPost] = useState([]);
+    let match = useRouteMatch();
+    //Modal for delete
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         axios.get("http://localhost:8010/event")
@@ -43,74 +43,74 @@ const Events = () => {
     }
 
 
-  const deleteHandler = (_id) => {
-    console.log(_id);
+    const deleteHandler = (_id) => {
+        console.log(_id);
 
-    const confirm = window.confirm(`Would you like to delete ${_id} ?`);
-    if (confirm === true) {
-      axios
-        .delete("http://localhost:8010/event/" + _id)
-        .then(() => {
-          return axios.get("http://localhost:8010/event");
-        })
-        .then((response) => {
-          //console.log(response.data);
-          setPost(response.data);
-        });
-    } else {
-      return axios.get("http://localhost:8010/event");
-    }
-    window.location.reload(false);
-  };
+        const confirm = window.confirm(`Would you like to delete ${_id} ?`);
+        if (confirm === true) {
+            axios
+                .delete("http://localhost:8010/event/" + _id)
+                .then(() => {
+                    return axios.get("http://localhost:8010/event");
+                })
+                .then((response) => {
+                    //console.log(response.data);
+                    setPost(response.data);
+                });
+        } else {
+            return axios.get("http://localhost:8010/event");
+        }
+        window.location.reload(false);
+    };
 
-  // Update Postlist when the button on NewEventPost.js clicked
-  const updateHandler = () => {
-    window.location.reload(false);
-  };
+    // Update Postlist when the button on NewEventPost.js clicked
+    const updateHandler = () => {
+        window.location.reload(false);
+    };
 
     const PostList = post.map((p) => {
         return (
             <div key={p._id}>
                 <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} likes={p.likes} addLikeHandler={() => addLikeHandler(p._id)} handleShow={handleShow}
-          deleteHandler={() => deleteHandler(p._id)}/>
+                    deleteHandler={() => deleteHandler(p._id)} />
 
-        <DeleteConfirmation
-          show={show}
-          handleClose={handleClose}
-          deleteHandler={() => deleteHandler(p._id)}
-        />
-      </div>
-    );
-  });
-  return (
-    <Container>
-      <Row>
-        <Col>
-          <NewEventPost updateHandler={updateHandler} />
-          <Row className="justify-content-md-center">
+                <DeleteConfirmation
+                    show={show}
+                    handleClose={handleClose}
+                    deleteHandler={() => deleteHandler(p._id)}
+                />
+            </div>
+        );
+    });
+    return (
+        <>
             <Logout />
-          </Row>
-        </Col>
-        <Col>
-          <Switch>
-            <Route path="/event/:eventId">
-              <Event />
-            </Route>
-            <Route path={match.path}>
-              <Col
-                style={{
-                  margin: "20px",
-                }}
-              >
-                <h1>LATEST EVENTS</h1>
-              </Col>
-              {PostList}
-            </Route>
-          </Switch>
-        </Col>
-      </Row>
-    </Container>
-  );
+            <Container>
+                <Row>
+                    <Col sm>
+                        <NewEventPost updateHandler={updateHandler} />
+                    </Col>
+
+                    <Col>
+                        <Switch>
+                            <Route path="/event/:eventId">
+                                <Event />
+                            </Route>
+                            <Route path={match.path}>
+                                <Col sm
+                                >
+                                    <h2 style={{
+                                        textAlign: "center", margin: "20px"
+                                    }}>LATEST EVENTS</h2>
+                                </Col>
+                                {PostList}
+                            </Route>
+                        </Switch>
+                    </Col>
+                </Row>
+            </Container>
+        </>
+    );
 };
 
 export default Events;
