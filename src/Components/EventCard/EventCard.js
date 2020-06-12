@@ -6,7 +6,7 @@ import Toast from 'react-bootstrap/Toast';
 import Row from 'react-bootstrap/Row';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
 const EventCard = ({ title, description, date, link, addLikeHandler, likes, handleShow, deleteHandler }) => {
 
