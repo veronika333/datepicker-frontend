@@ -28,18 +28,30 @@ const Events = () => {
     }, []);
 
     const addLikeHandler = (_id) => {
-        const nextPost = post.map((p) => {
-            if (p._id === _id) {
-                return Object.assign({}, p, {
-                    likes: p.likes + "♡"
-                });
-            } else {
-                return p;
-            }
-        });
+        const nextPost = post.find((p) => p._id === _id);
         console.log(nextPost);
-
-        setPost(nextPost);
+        const addLike = { ...nextPost };
+        addLike.likes = addLike.likes + 1;
+        
+         //axios.patch(url[, data[, config]])
+        let config = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        axios.patch("http://localhost:8010/event/" + _id, addLike, config)
+            .then((response) => {
+                console.log(response)
+                setPost(response.data);
+            })
+            .then(() => {
+                return axios.get("http://localhost:8010/event/");
+            })
+            .catch((err) => {
+                console.log(err)
+            }
+            )
+        window.location.reload(false);
     }
 
 
