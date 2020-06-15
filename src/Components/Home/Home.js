@@ -11,9 +11,10 @@ const Home = () => {
         <>
             <Jumbotron style={{ background: 'white', margin: '50px' }}>
                 <Container>
-                    <h1>Lorem Lorem Lorem</h1>
+                    <h1>Create your first event with Datepicker</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        Datepicker allows you to quickly make your event live and put it into the hands of your event-goers! <br/>
+                    With our simple interface, you can easily share your get-together information with our entire community by adding your own event, date and description. Plus, you can see how many people are going to participate in your event. </p>
                     <p>
                         <Button variant="success" href="register">Register now!</Button>
                     </p>
