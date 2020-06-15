@@ -8,6 +8,10 @@ body, button, input {
   background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
 }
 
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
