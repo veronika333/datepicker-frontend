@@ -47,9 +47,12 @@ const NewEventPost = ({ updateHandler }) => {
                         <Form.Group controlId="description">
                             <Form.Label>Description</Form.Label>
                             <Form.Control
-                                type="textarea"
+                                as="textarea"
+                                rows="3"
+                                cols="50"
                                 name="description"
                                 onChange={changeValueHandler} placeholder="Description"
+                                style={{background: 'linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)'}}
                             />
                         </Form.Group>
                         <Form.Group controlId="date">
