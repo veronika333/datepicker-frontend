@@ -13,7 +13,7 @@ const Home = () => {
                 <Container>
                     <h1>Create your first event with Datepicker</h1>
                     <p>
-                        Datepicker allows you to quickly make your event live and put it into the hands of your event-goers! <br/>
+                        Datepicker allows you to quickly make your event live and put it into the hands of your event-goers! <br />
                     With our simple interface, you can easily share your get-together information with our entire community by adding your own event, date and description. Plus, you can see how many people are going to participate in your event. </p>
                     <p>
                         <Button variant="success" href="register">Register now!</Button>
@@ -25,7 +25,7 @@ const Home = () => {
                     <Card.Header style={{ fontWeight: 'bolder' }}>Easy Group Scheduling!</Card.Header>
                     <Card.Body>
                         <Toast>
-                            <Toast.Header>
+                            <Toast.Header closeButton={false} >
                                 <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
                                 <strong className="mr-auto">Tomcat</strong>
                                 <small>11 mins ago</small>

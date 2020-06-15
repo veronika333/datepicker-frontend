@@ -12,7 +12,7 @@ const LoginSuccess = ({ show, handleClose }) => {
                 </Modal.Header>
                 <Modal.Body>Incorrect username or password. Please enter again.</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleClose} style={{ color: 'black' }}>
                         Close
             </Button>
                 </Modal.Footer>

@@ -69,7 +69,7 @@ const Login = () => {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" name="password" onChange={changeHandler} placeholder="Password" required />
                             </Form.Group>
-                            <Button variant="success" type="submit" >Submit</Button>
+                            <Button variant="success" type="submit" style={{ color: 'black' }}>Submit</Button>
                         </Form>
                     </Row>
                 </Container >

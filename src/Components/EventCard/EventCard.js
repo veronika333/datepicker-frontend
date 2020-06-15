@@ -16,7 +16,7 @@ const EventCard = ({ title, description, date, link, addLikeHandler, likes, hand
                 <Toast >
                     <Toast.Header closeButton={false}>
                         <strong className="mr-auto">Tomcat</strong>
-                        <Button variant="secondary" onClick={deleteHandler}>Delete</Button>
+                        <Button variant="secondary" onClick={deleteHandler} style={{ color: 'black' }}>Delete</Button>
                     </Toast.Header>
                     <Toast.Body>
                         <Card.Title>{title}</Card.Title>
@@ -28,9 +28,9 @@ const EventCard = ({ title, description, date, link, addLikeHandler, likes, hand
                         <Card.Text style={{ color: 'red', fontSize: '2rem' }}>
                             {/* <Button variant="outline-danger" onClick={addLikeHandler} >Like</Button> */}
                             {/* <i class="far fa-thumbs-up" onClick={addLikeHandler}></i> */}
-                            <FontAwesomeIcon className="far fa-thumbs-up" icon={faThumbsUp} onClick={addLikeHandler}  />
+                            <FontAwesomeIcon className="far fa-thumbs-up" icon={faThumbsUp} onClick={addLikeHandler} />
                             <span> {likes}</span>
-                            </Card.Text>
+                        </Card.Text>
                     </Toast.Body>
                 </Toast>
             </Row>
