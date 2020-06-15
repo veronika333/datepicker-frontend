@@ -4,6 +4,7 @@ import Event from "../Event/Event";
 import EventCard from "../EventCard/EventCard";
 import NewEventPost from "../NewEventPost/NewEventPost";
 import axios from "axios";
+import faker from "faker";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -32,8 +33,8 @@ const Events = () => {
         console.log(nextPost);
         const addLike = { ...nextPost };
         addLike.likes = addLike.likes + 1;
-        
-         //axios.patch(url[, data[, config]])
+
+        //axios.patch(url[, data[, config]])
         let config = {
             headers: {
                 "Content-Type": "application/json",
@@ -84,7 +85,7 @@ const Events = () => {
         return (
             <div key={p._id}>
                 <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} likes={p.likes} addLikeHandler={() => addLikeHandler(p._id)} handleShow={handleShow}
-                    deleteHandler={() => deleteHandler(p._id)} />
+                    deleteHandler={() => deleteHandler(p._id)} avatar={faker.image.avatar()} userName={faker.internet.userName()} />
 
                 <DeleteConfirmation
                     show={show}

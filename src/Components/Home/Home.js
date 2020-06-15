@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
+import faker from 'faker';
 
 const Home = () => {
     return (
@@ -25,9 +26,11 @@ const Home = () => {
                     <Card.Body>
                         <Toast>
                             <Toast.Header>
+                                <a href="/" className="avatar">
+                                    <img alt="avatar" src={faker.image.avatar()} style={{ width: '50px', marginRight: '5px' }} />
+                                </a>
                                 <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
-                                <strong className="mr-auto">Tomcat</strong>
-                                <small>11 mins ago</small>
+                                <strong className="mr-auto">{faker.internet.userName()}</strong>
                             </Toast.Header>
                             <Toast.Body>
                                 <p>Title: Pool Party</p>

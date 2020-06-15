@@ -7,14 +7,17 @@ import Row from 'react-bootstrap/Row';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
 
-const EventCard = ({ title, description, date, link, addLikeHandler, likes, handleShow, deleteHandler }) => {
+const EventCard = ({ title, description, date, link, addLikeHandler, likes, handleShow, deleteHandler, avatar, userName }) => {
 
     return (
         <Jumbotron style={{ background: 'white' }}>
             <Row className="justify-content-center">
                 <Toast >
                     <Toast.Header closeButton={false}>
-                        <strong className="mr-auto">Tomcat</strong>
+                        <a href="/" className="avatar">
+                            <img alt="avatar" src={avatar} style={{ width: '50px', marginRight: '5px' }} />
+                        </a>
+                        <strong className="mr-auto">{userName}</strong>
                         <Button variant="secondary" onClick={deleteHandler}>Delete</Button>
                     </Toast.Header>
                     <Toast.Body>
