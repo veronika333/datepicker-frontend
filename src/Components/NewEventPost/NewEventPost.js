@@ -61,7 +61,7 @@ const NewEventPost = ({ updateHandler }) => {
                             />
                         </Form.Group>
 
-                        <Button variant="success" type="submit" onClick={updateHandler}>
+                        <Button variant="success" type="submit" onClick={updateHandler} style={{ color: 'black' }}>
                             Add Event
         </Button>
                     </Form>

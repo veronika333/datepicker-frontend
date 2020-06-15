@@ -17,7 +17,7 @@ const DeleteConfirmation = ({ show, handleClose, deleteHandler }) => {
           <Button variant="secondary" onClick={() => deleteHandler(_id)}>
             Remove
           </Button>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} >
             Cancel
           </Button>
         </Modal.Footer>

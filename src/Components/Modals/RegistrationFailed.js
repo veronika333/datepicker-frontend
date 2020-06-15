@@ -13,7 +13,7 @@ const RegistrationSuccess = ({ show, handleClose }) => {
           The username has already been taken. Please choose another.
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} style={{ color: 'black' }}>
             Close
           </Button>
         </Modal.Footer>

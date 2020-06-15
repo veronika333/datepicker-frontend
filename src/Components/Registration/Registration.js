@@ -115,7 +115,7 @@ const Registration = () => {
                   required
                 />
               </Form.Group>
-              <Button type="submit" variant="success">
+              <Button type="submit" variant="success" style={{ color: 'black' }}>
                 Submit
             </Button>
               <Form.Text className="text-muted">
