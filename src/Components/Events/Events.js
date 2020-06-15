@@ -56,9 +56,12 @@ const Events = () => {
 
 
     const deleteHandler = (_id) => {
+         const deletePost = post.find((p) => p._id === _id);
         console.log(_id);
+         console.log(deletePost.title);
+         
 
-        const confirm = window.confirm(`Would you like to delete ${_id} ?`);
+        const confirm = window.confirm(`Would you like to delete the event: ${deletePost.title}?`);
         if (confirm === true) {
             axios
                 .delete("http://localhost:8010/event/" + _id)
