@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import Jumbotron from "react-bootstrap/Jumbotron";
 
 const Registration = () => {
   let history = useHistory();
@@ -33,7 +33,7 @@ const Registration = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8010/register/send", newUser)
+      .post("https://datepicker-backend.herokuapp.com/register/send", newUser)
       //axios.post('http://localhost:3001/registration', newUser)
       .then((response) => {
         console.log(response.data);
@@ -51,7 +51,7 @@ const Registration = () => {
 
   return (
     <div>
-      <Jumbotron style={{ background: 'none' }}>
+      <Jumbotron style={{ background: "none" }}>
         <Container>
           <Row className="justify-content-md-center">
             <Form
@@ -115,13 +115,17 @@ const Registration = () => {
                   required
                 />
               </Form.Group>
-              <Button type="submit" variant="success" style={{ color: 'black' }}>
+              <Button
+                type="submit"
+                variant="success"
+                style={{ color: "black" }}
+              >
                 Submit
-            </Button>
+              </Button>
               <Form.Text className="text-muted">
-                By signing up you accept Datepicker's Terms of service and Privacy
-                policy
-            </Form.Text>
+                By signing up you accept Datepicker's Terms of service and
+                Privacy policy
+              </Form.Text>
             </Form>
           </Row>
         </Container>
