@@ -8,6 +8,7 @@ import Toast from 'react-bootstrap/Toast';
 import imageSrc from '../Assets/photo-of-women-wearing-masks-787961.jpg';
 import imageSrc2 from '../Assets/iphone-on-notebook-3361483.jpg';
 // Images are downloaded from https://www.pexels.com/
+import faker from 'faker';
 
 const Home = () => {
     return (
@@ -29,8 +30,11 @@ const Home = () => {
                     <Card.Body>
                         <Toast>
                             <Toast.Header closeButton={false} >
+                                <a href="/" className="avatar">
+                                    <img alt="avatar" src={faker.image.avatar()} style={{ width: '50px', marginRight: '5px' }} />
+                                </a>
                                 <img src="holder.js/20x20?text=%20" className="rounded mr-2" alt="" />
-                                <strong className="mr-auto">Tomcat</strong>
+                                <strong className="mr-auto">{faker.internet.userName()}</strong>
                                 <small>11 mins ago</small>
                             </Toast.Header>
                             <Toast.Body>
