@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Toast from 'react-bootstrap/Toast';
 import imageSrc from '../Assets/photo-of-women-wearing-masks-787961.jpg';
 import imageSrc2 from '../Assets/iphone-on-notebook-3361483.jpg';
+// Images are downloaded from https://www.pexels.com/
 
 const Home = () => {
     return (
