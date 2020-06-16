@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import "./EventCard.css";
 
 const EventCard = ({ title, description, date, link, addLikeHandler, likes, handleShow, deleteHandler }) => {
 
@@ -28,7 +29,7 @@ const EventCard = ({ title, description, date, link, addLikeHandler, likes, hand
                         <Card.Text style={{ color: 'red', fontSize: '2rem' }}>
                             {/* <Button variant="outline-danger" onClick={addLikeHandler} >Like</Button> */}
                             {/* <i class="far fa-thumbs-up" onClick={addLikeHandler}></i> */}
-                            <FontAwesomeIcon className="far fa-thumbs-up" icon={faThumbsUp} onClick={addLikeHandler} />
+                            <FontAwesomeIcon className="far fa-thumbs-up likes" icon={faThumbsUp} onClick={addLikeHandler} />
                             <span> {likes}</span>
                         </Card.Text>
                     </Toast.Body>
