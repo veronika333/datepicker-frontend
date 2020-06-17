@@ -18,7 +18,7 @@ const Logout = () => {
         <div>
             <Form onSubmit={logoutHandler} >
                 <Row className="justify-content-end" style={{ margin: '10px' }}>
-                    <Button variant="outline-dark" type="submit" style={{ fontSize: '0.8rem', margin: '10px' }} >
+                    <Button variant="outline-dark" type="submit" style={{ fontSize: '0.8rem', margin: '10px', color: 'black' }} >
                         Logout
                 </Button>
                 </Row>
