@@ -3,8 +3,8 @@ import { useRouteMatch, Link, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Toast from 'react-bootstrap/Toast';
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Toast from "react-bootstrap/Toast";
 
 const Event = () => {
   const [loadedPost, setLoadedPost] = useState();
@@ -14,10 +14,12 @@ const Event = () => {
   useEffect(() => {
     //use fetch only when i dont have data yet
     if (!loadedPost) {
-      axios.get("http://localhost:8010/event/" + eventId).then((response) => {
-        console.log(response.data);
-        setLoadedPost(response.data);
-      });
+      axios
+        .get("https://datepicker-backend.herokuapp.com/event/" + eventId)
+        .then((response) => {
+          console.log(response.data);
+          setLoadedPost(response.data);
+        });
     }
   });
   let postData = undefined;
@@ -27,7 +29,7 @@ const Event = () => {
   if (loadedPost) {
     postData = (
       <div>
-        <Jumbotron style={{ background: 'white' }}>
+        <Jumbotron style={{ background: "white" }}>
           <Toast.Header closeButton={false}>
             <strong className="mr-auto">Tomcat</strong>
           </Toast.Header>
@@ -39,9 +41,13 @@ const Event = () => {
             </Card.Subtitle>
             <Card.Text>{loadedPost.description}</Card.Text>
             <Button variant="outline-secondary">
-              <Link to="/event" className="d-inline p-2 text-black" style={{ color: 'black' }}>
+              <Link
+                to="/event"
+                className="d-inline p-2 text-black"
+                style={{ color: "black" }}
+              >
                 Go Back
-            </Link>
+              </Link>
             </Button>
           </Toast.Body>
         </Jumbotron>

@@ -20,7 +20,10 @@ const Events = () => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8010/event")
+
+    axios
+      .get("https://datepicker-backend.herokuapp.com/event")
+
       .then((response) => {
         const posts = response.data;
         setPost(posts);
@@ -40,41 +43,46 @@ const Events = () => {
         "Content-Type": "application/json",
       },
     };
-    axios.patch("http://localhost:8010/event/" + _id, addLike, config)
+    axios
+      .patch(
+        "https://datepicker-backend.herokuapp.com/event/" + _id,
+        addLike,
+        config
+      )
       .then((response) => {
-        console.log(response)
+        console.log(response);
         setPost(response.data);
       })
       .then(() => {
-        return axios.get("http://localhost:8010/event/");
+        return axios.get("https://datepicker-backend.herokuapp.com/event");
       })
       .catch((err) => {
-        console.log(err)
-      }
-      )
+        console.log(err);
+      });
     window.location.reload(false);
-  }
-
+  };
 
   const deleteHandler = (_id) => {
     const deletePost = post.find((p) => p._id === _id);
     console.log(_id);
     console.log(deletePost.title);
 
-
-    const confirm = window.confirm(`Would you like to delete the event: ${deletePost.title}?`);
+    const confirm = window.confirm(
+      `Would you like to delete the event: ${deletePost.title}?`
+    );
     if (confirm === true) {
       axios
-        .delete("http://localhost:8010/event/" + _id)
+        .delete("https://datepicker-backend.herokuapp.com/event/" + _id)
         .then(() => {
-          return axios.get("http://localhost:8010/event");
+          return axios.get("https://datepicker-backend.herokuapp.com/event");
         })
         .then((response) => {
           //console.log(response.data);
           setPost(response.data);
         });
     } else {
-      return axios.get("http://localhost:8010/event");
+     
+return axios.get("https://datepicker-backend.herokuapp.com/event");
     }
     window.location.reload(false);
   };
@@ -107,18 +115,21 @@ const Events = () => {
           <Col sm>
             <NewEventPost updateHandler={updateHandler} />
           </Col>
-
           <Col>
             <Switch>
               <Route path="/event/:eventId">
                 <Event />
               </Route>
               <Route path={match.path}>
-                <Col sm
-                >
-                  <h2 style={{
-                    textAlign: "center", margin: "20px"
-                  }}>LATEST EVENTS</h2>
+                <Col sm>
+                  <h2
+                    style={{
+                      textAlign: "center",
+                      margin: "20px",
+                    }}
+                  >
+                    LATEST EVENTS
+                  </h2>
                 </Col>
                 {PostList}
               </Route>
