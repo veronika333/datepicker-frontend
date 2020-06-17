@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Logout from "../Logout/Logout";
 import DeleteConfirmation from "../Modals/DeleteConfirmation";
+import faker from "faker";
 
 const Events = () => {
   const [post, setPost] = useState([]);
@@ -19,8 +20,10 @@ const Events = () => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
+
     axios
       .get("https://datepicker-backend.herokuapp.com/event")
+
       .then((response) => {
         const posts = response.data;
         setPost(posts);
@@ -78,7 +81,8 @@ const Events = () => {
           setPost(response.data);
         });
     } else {
-      return axios.get("https://datepicker-backend.herokuapp.com/event");
+     
+return axios.get("https://datepicker-backend.herokuapp.com/event");
     }
     window.location.reload(false);
   };
@@ -91,16 +95,9 @@ const Events = () => {
   const PostList = post.map((p) => {
     return (
       <div key={p._id}>
-        <EventCard
-          title={p.title}
-          description={p.description}
-          date={p.date}
-          link={`${match.url}/${p._id}`}
-          likes={p.likes}
-          addLikeHandler={() => addLikeHandler(p._id)}
-          handleShow={handleShow}
+        <EventCard title={p.title} description={p.description} date={p.date} link={`${match.url}/${p._id}`} likes={p.likes} addLikeHandler={() => addLikeHandler(p._id)} handleShow={handleShow}
           deleteHandler={() => deleteHandler(p._id)}
-        />
+          avatar={faker.image.avatar()} userName={faker.internet.userName()} />
 
         <DeleteConfirmation
           show={show}
@@ -118,7 +115,6 @@ const Events = () => {
           <Col sm>
             <NewEventPost updateHandler={updateHandler} />
           </Col>
-
           <Col>
             <Switch>
               <Route path="/event/:eventId">
