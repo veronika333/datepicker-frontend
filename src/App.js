@@ -1,11 +1,30 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import Calendar from './Components/Calendar/Calendar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainNav from "./Components/MainNav/MainNav";
+import Home from "./Components/Home/Home";
+import Registration from './Components/Registration/Registration';
+import Login from './Components/Login/Login';
+import Events from './Components/Events/Events';
+//import Calendar from './Components/Calendar/Calendar';
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
     <div>
-      <Calendar />
+      <Router>
+        <MainNav />
+        <main>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/register" component={Registration} />
+            <Route path="/login" component={Login} />
+            <Route path="/event" component={Events} />
+          </Switch>
+        </main>
+        <Footer />
+      </Router>
     </div>
   );
 }
