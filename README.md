@@ -1,5 +1,9 @@
 # "Datepicker-frontend"
 
+### https://datepicker-frontend.herokuapp.com/
+
+![homepage](./public/homepage.png?raw=true)
+
 ## Development
 
 This app was developed by a team of three members: Veronika Maisuradze, Makiyo Rönkkö and Olabisi Odusanya. The aim is to allow friends, colleagues and acquaintances pick a suitable date to meet for a get-together, party or other meetings.
